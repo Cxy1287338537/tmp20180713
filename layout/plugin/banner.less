@@ -1,0 +1,57 @@
+.banner (@hh: 400px) {
+  @item-w: 45px;
+  @item-h: 5px;
+  @height: @hh;
+  .banner {
+    position: relative;
+    width: 100%;
+    height: @height;
+    background: black;
+    overflow: hidden;
+
+    &-imgs {
+      position: relative;
+      width: 500%;
+      height: @height;
+      float: left;
+      transition: all 1s ease;
+      cursor: pointer;
+    }
+
+    &-img {
+      position: relative;
+      width: 20%;
+      height: @height;
+      float: left;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &-controls {
+      position: absolute;
+      width: 100%;
+      height: @item-h;
+      left: 0;
+      bottom: 10px;
+      text-align: center;
+    }
+    &-controls-item {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 4px;
+      background: #64cdbe;
+      width: @item-w;
+      height: @item-h;
+      cursor: pointer;
+      &.active {
+        background: #fff;
+      }
+    }
+  }
+}
+
+.banner(400px);
+@media (max-width: 980px) {
+  .banner(200px);
+}

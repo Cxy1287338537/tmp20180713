@@ -1,0 +1,52 @@
+.fixedbar {
+  @w: 60px;
+  right: 0;
+  width: @w;
+  z-index: 888;
+  bottom: 150px;
+  position: fixed;
+  padding: 0 14px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px 0 rgba(7,17,27,0.1);
+
+  &-item {
+    position: relative;
+    width: @w - 28px;
+    height: @w;
+    line-height: @w;
+    text-align: center;
+    cursor: pointer;
+
+    span.iconfont {
+      font-size: 28px;
+      color: #D9DDE1;
+    }
+  }
+
+  &-item:hover > &-item-desc {
+    transform: translateX(0);
+    background-color: rgba(20,20,20,0.75);
+  }
+
+  &-item-desc {
+    top: 0;
+    width: @w;
+    height: @w;
+    left: -14px;
+    position: absolute;
+    transition: all 0.5s;
+    transform: translateX(100%);
+    background-color: rgba(20,20,20,0);
+
+    span {
+      float: left;
+      width: @w/2;
+      height: @w/2;
+      line-height: @w/2;
+      text-align: center;
+      display: inline-block;
+      color: #f8f8f8;
+    }
+  }
+
+}

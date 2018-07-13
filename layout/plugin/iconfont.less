@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('https://at.alicdn.com/t/font_702222_2badm2e390k.eot');
+  src: url('https://at.alicdn.com/t/font_702222_2badm2e390k.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_702222_2badm2e390k.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_702222_2badm2e390k.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_702222_2badm2e390k.svg#iconfont') format('svg');
+}
+
+.iconf (@n,@c) {
+  .iconfont-@{n}::before {
+    content: @c;
+  }
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconf(login, '\e6d2');
+.iconf(regist, '\e680');
+.iconf(error, '\e64b');
+.iconf(check, '\e64a');
+.iconf(info, '\e6e5');
+.iconf(search, '\e01c');
+.iconf(add, '\e781');
+.iconf(mod, '\e791');
+.iconf(up, '\e6a9');
+.iconf(down, '\e6a8');
+.iconf(del, '\e68e');
+.iconf(setup, '\e728');
+.iconf(last, '\e01b');
+.iconf(next, '\e01d');
+.iconf(customer, '\e600');
+.iconf(weibo, '\e601');
+.iconf(wechat, '\e620');
+.iconf(menu, '\e639');
+.iconf(switch-off, '\e66c');
+.iconf(switch-on, '\e602');
+.iconf(feedback, '\e61f');

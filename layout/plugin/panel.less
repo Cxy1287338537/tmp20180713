@@ -1,0 +1,151 @@
+.panel {
+  position: relative;
+  width: 100%;
+  padding: 30px;
+
+  &-white {
+    background-color: #fff;
+    box-shadow: 0 2px 8px 0 rgba(7,17,27,0.26);
+  }
+  &-gray {
+    background-color: transparent;
+    box-shadow: 0 2px 8px 0 rgba(7,17,27,0.26);
+  }
+
+  &-header {
+    @h: 40px;
+    width: 100%;
+    height: @h;
+    text-align: center;
+    position: relative;
+
+    span {
+      height: @h;
+      color: #4D555D;
+      line-height: @h;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 6px;
+      vertical-align: top;
+      display: inline-block;
+    }
+
+    span[class*=panel-icon-] {
+      &::before, &::after {
+        content: '';
+        width: 56px;
+        height: 36px;
+        display: inline-block;
+        vertical-align: bottom;
+        background-size: 56px auto;
+        background-repeat: no-repeat;
+      }
+      &::before {
+        margin-right: 24px;
+      }
+      &::after {
+        margin-left: 24px;
+      }
+    }
+
+    span.panel-icon-job::before {
+      background-position: 0px 0px;
+      background-image: url(../assets/icon.png);
+    }
+    span.panel-icon-job::after {
+      background-position: 0px -36px;
+      background-image: url(../assets/icon.png);
+    }
+
+    span.panel-icon-star::before {
+      background-position: 0px -36px*14;
+      background-image: url(../assets/icon.png);
+    }
+    span.panel-icon-star::after {
+      background-position: 0px -36px*15;
+      background-image: url(../assets/icon.png);
+    }
+  }
+
+  &-row {
+    width: 100%;
+    margin-top: 36px;
+    position: relative;
+
+    &::after {
+      content: '';
+      clear: both;
+      display: block;
+    }
+  }
+
+  &-cell-1 {
+    float: left;
+    padding: 10px;
+    width: 100%/12;
+    position: relative;
+  }
+  &-cell-3 {
+    position: relative;
+    width: 25%;
+    float: left;
+    padding: 10px;
+  }
+  &-cell-4 {
+    float: left;
+    padding: 10px;
+    width: 100%/3;
+    position: relative;
+  }
+  &-cell-6 {
+    float: left;
+    padding: 10px;
+    width: 50%;
+    position: relative;
+  }
+  &-cell-11 {
+    float: left;
+    padding: 10px;
+    width: 1100%/12;
+    position: relative;
+  }
+  &-cell-12 {
+    float: left;
+    padding: 10px;
+    width: 100%;
+    position: relative;
+  }
+
+  [class*=panel-cell-].default-height {
+    height: 50px;
+  }
+
+  @media (max-width: 980px) {
+    & {
+      padding: 15px;
+    }
+    
+    &-cell-2 {
+      width: 20%;
+    }
+    &-cell-3 {
+      width: 50%;
+    }
+    &-cell-4 {
+      width: 100%;
+    }
+    &-cell-6 {
+      width: 100%;
+    }
+    &-cell-1 {
+      width: auto;
+      padding: 0 5px;
+    }
+    &-cell-7, &-cell-8,
+    &-cell-9, &-cell-10,
+    &-cell-11 {
+      width: 500%6;
+    }
+  }
+
+}

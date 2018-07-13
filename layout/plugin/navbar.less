@@ -1,0 +1,171 @@
+.navbar {
+  @height: 90px;
+  position: relative;
+  width: 100%;
+  min-height: @height;
+  padding: 0 @height;
+  background-color: @navbar-background-color;
+  border: 1px solid @navbar-border-color;
+
+  &-header {
+    float: left;
+    height: @height;
+    position: relative;
+    line-height: @height;
+  }
+
+  &-logo {
+    color: #000;
+    font-size: 32px;
+    font-weight: 400;
+  }
+
+  @media (min-width: 980px) {
+    @h: 30px;
+    @_height: @height - 2px;
+    &-list {
+      float: right;
+      height: @_height;
+      list-style: none;
+    }
+    &-item {
+      float: left;
+      height: @_height;
+      padding: (@_height - @h)/2 18px; 
+    }
+    &-item > a {
+      height: @h;
+      float: left;
+      color: #777;
+      line-height: @h;
+      font-size: 18px;
+      span {
+        margin-right: 5px;
+      }
+    }
+    &-item.active > a, &-item > a:hover {
+      color: #33accc;
+    }
+
+    &-toggle {
+      display: none;
+    }
+
+    &-item-input {
+      height: @h;
+      width: 160px;
+      padding-left: 10px;
+      border-radius: @h 0 0 @h;
+      border: 2px solid #D9DDE1;
+      border-right-width: 0;
+      float: left;
+    }
+
+    &-item-search {
+      float: left;
+      height: @h;
+      width: @h;
+      border: 2px solid #D9DDE1;
+      border-left-width: 0;
+      border-radius: 0 @h @h 0;
+      text-align: center;
+      line-height: @h - 4px;
+      cursor: pointer;
+      span {
+        color: #aaa;
+      }
+    }
+  }
+  @media (max-width: 980px) {
+    @h: 40px;
+    & {
+      padding: 0 18px;
+    }
+
+    &-list {
+      width: 100%;
+      clear: both;
+      display: block;
+      list-style: none;
+      position: relative;
+      height: 0;
+      overflow: hidden;
+      border-top: 1px solid @navbar-border-color;
+      transition: all 0.5s;
+    }
+
+    &-item {
+      width: 100%;
+      display: block;
+      height: @h;
+      position: relative;
+    }
+
+    &-item > a {
+      height: @h;
+      width: 100%;
+      color: #777;
+      line-height: @h;
+      font-size: 18px;
+      text-align: center;
+      display: inline-block;
+    }
+    &-item.active > a, &-item > a:hover {
+      color: #33accc;
+      background-color: #e8e8e8;
+    }
+
+    &-toggle {
+      @h: 50px;
+      height: @h;
+      float: right;
+      line-height: @h;
+      padding: 0 15px;
+      background: #fff;
+      border-radius: 5px;
+      box-sizing: content-box;
+      margin-top: (@height - @h)/2 - 1px;
+      border: 2px solid @navbar-border-color;
+
+      &:hover {
+        background: #f7f7f7;
+      }
+      &:active, &.open {
+        background: #e7e7e7;
+      }
+
+      span {
+        font-size: 20px;
+      }
+    }
+
+    &-toggle.open + &-list {
+      height: auto;
+    }
+
+    &-item-input {
+      height: @h;
+      width: ~"calc(100% - 40px)";
+      padding-left: 10px;
+      border-radius: @h 0 0 @h;
+      border: 2px solid #D9DDE1;
+      border-right-width: 0;
+      float: left;
+    }
+
+    &-item-search {
+      float: left;
+      height: @h;
+      width: @h;
+      border: 2px solid #D9DDE1;
+      border-left-width: 0;
+      border-radius: 0 @h @h 0;
+      text-align: center;
+      line-height: @h - 4px;
+      cursor: pointer;
+      span {
+        color: #aaa;
+      }
+    }
+  }
+}

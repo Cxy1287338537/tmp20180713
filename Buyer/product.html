@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+    <title>产品列表</title>
+    <link rel="stylesheet" href="../css/commont.css">
+    <link rel="stylesheet" href="css/buyer.css">
+    <script src="../js/jquery.js"></script>
+    <script src="../js/commont.js"></script>
+    <style>
+      .pro-list1,.pro-list2 {
+        height: 100%;
+        list-style: none;
+        display: inline-block;
+        position: relative;
+      }
+      .pro-list1 > li,
+      .pro-list2 > li {
+        float: left;
+        height: 100%;
+        border-radius: 8px;
+        display: inline-block;
+      }
+      .pro-list1 > li > a,
+      .pro-list2 > li > a {
+        height: 100%;
+        padding: 0 15px;
+        line-height: 30px;
+        color: #6d6d6d;
+        font-size: 14px;
+      }
+      
+      .pro-list2 a.pro-btn {
+        width: 30px;
+        padding: 0;
+        text-align: center;
+      }
+      .pro-list2 a.pro-btn > span {
+        display: inline-block;
+        width: 20px;
+        height: 30px;
+        text-align: center;
+        font-size: 16px;
+      }
+      .pro-list2 span.iconfont {
+        display: inline-block;
+        vertical-align: top;
+        height: 30px;
+        line-height: 30px;
+        font-size: 24px;
+        color: #6d6d6d;
+      }
+      .pro-list2 span.iconfont-switch-on {
+        color: #f40;
+      }
+      .pro-list2 span.iconfont-switch-on + span.text {
+        color: #f40;
+      }
+      .pro-list2 span.text {
+        display: inline-block;
+        vertical-align: top;
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+        color: #6d6d6d;
+      }
+
+      .pro-list1 > li.active {
+        background-color: #9199a1;
+      }
+      .pro-list1 > li.active > a {
+        color: #f8f8f8;
+      }
+      .pro-list1 > li:hover {
+        background-color: rgba(145,153,161,0.2);
+      }
+      .pro-list1 > li:not(:last-child) {
+        margin-right: 5px;
+      }
+
+
+      .choice-price {
+        position: relative;
+        display: inline-block;
+        height: 30px;
+      }
+      .choice-price > input {
+        position: relative;
+        width: 60px;
+        height: 30px;
+        border: 1px solid #888;
+        border-radius: 30px;
+        padding: 5px;
+      }
+      .choice-price > span {
+        height: 30px;
+        line-height: 30px;
+        display: inline-block;
+        vertical-align: top;
+      }
+      .choice-price > .computed {
+        height: 30px;
+        padding: 0 10px;
+        color: #f8f8f8;
+        line-height: 30px;
+        display: inline-block;
+        vertical-align: top;
+        background-color: #f40;
+        border-radius: 5px;
+        margin-left: 10px;
+      }
+      .panel-cell-6 > span.text {
+        display: inline-block;
+        vertical-align: top;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+      }
+      .panel-cell-6 > input {
+        position: relative;
+        width: 60px;
+        height: 30px;
+        border: 1px solid #888;
+        border-radius: 30px;
+        padding: 5px;
+      }
+      .panel-cell-6 > .pro-goto {
+        height: 30px;
+        padding: 0 10px;
+        color: #f8f8f8;
+        line-height: 30px;
+        display: inline-block;
+        vertical-align: top;
+        background-color: #f40;
+        border-radius: 5px;
+        margin-left: 10px;
+      }
+
+      @media (max-width: 980px) {
+        .panel-cell-4,.panel-cell-6 {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <ul class="clist">
+        <li>
+          <a href="#"><span class="iconfont iconfont-login"></span>登录</a>
+        </li>
+        <li>
+          <a href="#"><span class="iconfont iconfont-regist"></span>注册</a>
+        </li>
+        <li>
+          <a href="javascript:;">选择站点<span class="caret-w"></span></a>
+        </li>
+      </ul>
+    </header>
+
+    <nav class="navbar">
+      <div class="navbar-header">
+        <a href="./index.html" class="navbar-logo">BUYER LOGO</a>
+      </div>
+      <button class="navbar-toggle" cxy-role="navbar-toggle">
+        <span class="iconfont iconfont-menu"></span>
+      </button>
+      <ul class="navbar-list">
+        <li class="navbar-item">
+          <a href="./index.html" class="navbar-item-text">首页</a>
+        </li>
+        <li class="navbar-item active">
+          <a href="./product.html" class="navbar-item-text">产品</a>
+        </li>
+        <li class="navbar-item">
+          <a href="./help.html" class="navbar-item-text">帮助</a>
+        </li>
+        <li class="navbar-item">
+          <a href="./about.html" class="navbar-item-text">关于我们</a>
+        </li>
+        <li class="navbar-item">
+          <input type="text" class="navbar-item-input" placeholder="请输入关键词">
+          <div class="navbar-item-search"><span class="iconfont iconfont-search"></span></div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="panel panel-white">
+      <div class="panel-row nomargin border-bottom">
+        <div class="panel-cell-1 default-height">
+          <span class="pro-text">一级类目：</span>
+        </div>
+        <div class="panel-cell-11 nopadding">
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type active">全部</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类一</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类二</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类三</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类四</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类五</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类六</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类七</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类一</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类二</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类三</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类四</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类五</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类六</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类七</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel-row nomargin border-bottom">
+        <div class="panel-cell-1 default-height">
+          <span class="pro-text">二级类目：</span>
+        </div>
+        <div class="panel-cell-11 nopadding">
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type active">全部</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类一</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类二</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类三</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类四</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类五</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类六</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类七</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类一</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类二</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类三</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类四</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类五</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类六</span>
+          </div>
+          <div class="panel-cell-1 default-height">
+            <span class="pro-type">分类七</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-gray">
+      <div class="panel-row nomargin">
+        <div class="panel-cell-4 default-height">
+          <ul class="pro-list1">
+            <li class="active"><a href="javascript:;">综合排序</a></li>
+            <li><a href="javascript:;">销量</a></li>
+            <li><a href="javascript:;">信用</a></li>
+            <li><a href="javascript:;">价格</a></li>
+          </ul>
+        </div>
+        <div class="panel-cell-4 default-height text-center">
+          <div class="choice-price">
+            <input type="text" class="form" placeholder="￥">
+            <span>-</span>
+            <input type="text" class="to" placeholder="￥">
+            <a href="javascript:;" class="computed">确定</a>
+          </div>
+        </div>
+        <div class="panel-cell-4 default-height text-right">
+          <ul class="pro-list2">
+            <li><a href="javascript:;">
+              <span class="iconfont iconfont-switch-off"></span>
+              <span class="text">只显示免费产品</span>
+            </a></li>
+            <li><a href="javascript:;">1/100</a></li>
+            <li>
+              <a href="javascript:;" class="pro-btn"><span class="iconfont iconfont-last"></span></a>
+              <a href="javascript:;" class="pro-btn"><span class="iconfont iconfont-next"></span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel-row">
+        <div class="panel-cell-3">
+          <div class="media media-thumbnail">
+            <div class="media-thumbnail-brand">免费</div>
+            <img src="img/pro.webp">
+            <div class="media-thumbnail-title">华硕(ASUS) 飞行堡垒五代FX80 15.6英寸游戏笔记本电脑(i7-8750H 8G 128GSSD+1T GTX1050Ti 4G IPS)火陨红黑</div>
+            <div class="media-thumbnail-price">
+              <div class="media-thumbnail-price-to">0.00</div>
+              <div class="media-thumbnail-price-form">7199.00</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-cell-3">
+          <div class="media media-thumbnail">
+            <div class="media-thumbnail-brand">免费</div>
+            <img src="img/pro.webp">
+            <div class="media-thumbnail-title">华硕(ASUS) 飞行堡垒五代FX80 15.6英寸游戏笔记本电脑(i7-8750H 8G 128GSSD+1T GTX1050Ti 4G IPS)火陨红黑</div>
+            <div class="media-thumbnail-price">
+              <div class="media-thumbnail-price-to">0.00</div>
+              <div class="media-thumbnail-price-form">7199.00</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-cell-3">
+          <div class="media media-thumbnail">
+            <div class="media-thumbnail-brand">免费</div>
+            <img src="img/pro.webp">
+            <div class="media-thumbnail-title">华硕(ASUS) 飞行堡垒五代FX80 15.6英寸游戏笔记本电脑(i7-8750H 8G 128GSSD+1T GTX1050Ti 4G IPS)火陨红黑</div>
+            <div class="media-thumbnail-price">
+              <div class="media-thumbnail-price-to">0.00</div>
+              <div class="media-thumbnail-price-form">7199.00</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-cell-3">
+          <div class="media media-thumbnail">
+            <div class="media-thumbnail-brand">免费</div>
+            <img src="img/pro.webp">
+            <div class="media-thumbnail-title">华硕(ASUS) 飞行堡垒五代FX80 15.6英寸游戏笔记本电脑(i7-8750H 8G 128GSSD+1T GTX1050Ti 4G IPS)火陨红黑</div>
+            <div class="media-thumbnail-price">
+              <div class="media-thumbnail-price-to">0.00</div>
+              <div class="media-thumbnail-price-form">7199.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-row">
+        <div class="panel-cell-3">
+          <div class="media media-thumbnail">
+            <div class="media-thumbnail-brand">免费</div>
+            <img src="img/pro.webp">
+            <div class="media-thumbnail-title">华硕(ASUS) 飞行堡垒五代FX80 15.6英寸游戏笔记本电脑(i7-8750H 8G 128GSSD+1T GTX1050Ti 4G IPS)火陨红黑</div>
+            <div class="media-thumbnail-price">
+              <div class="media-thumbnail-price-to">0.00</div>
+              <div class="media-thumbnail-price-form">7199.00</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-cell-3">
+          <div class="media media-thumbnail">
+            <div class="media-thumbnail-brand">免费</div>
+            <img src="img/pro.webp">
+            <div class="media-thumbnail-title">华硕(ASUS) 飞行堡垒五代FX80 15.6英寸游戏笔记本电脑(i7-8750H 8G 128GSSD+1T GTX1050Ti 4G IPS)火陨红黑</div>
+            <div class="media-thumbnail-price">
+              <div class="media-thumbnail-price-to">0.00</div>
+              <div class="media-thumbnail-price-form">7199.00</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-cell-3">
+          <div class="media media-thumbnail">
+            <div class="media-thumbnail-brand">免费</div>
+            <img src="img/pro.webp">
+            <div class="media-thumbnail-title">华硕(ASUS) 飞行堡垒五代FX80 15.6英寸游戏笔记本电脑(i7-8750H 8G 128GSSD+1T GTX1050Ti 4G IPS)火陨红黑</div>
+            <div class="media-thumbnail-price">
+              <div class="media-thumbnail-price-to">0.00</div>
+              <div class="media-thumbnail-price-form">7199.00</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-cell-3">
+          <div class="media media-thumbnail">
+            <div class="media-thumbnail-brand">免费</div>
+            <img src="img/pro.webp">
+            <div class="media-thumbnail-title">华硕(ASUS) 飞行堡垒五代FX80 15.6英寸游戏笔记本电脑(i7-8750H 8G 128GSSD+1T GTX1050Ti 4G IPS)火陨红黑</div>
+            <div class="media-thumbnail-price">
+              <div class="media-thumbnail-price-to">0.00</div>
+              <div class="media-thumbnail-price-form">7199.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-row">
+        <div class="panel-cell-6 default-height text-right">
+          <div class="btn-group">
+            <a href="#" class="btn active"><span class="iconfont iconfont-last"></span></a>
+            <a href="#" class="btn active">1</a>
+            <a href="#" class="btn">2</a>
+            <a href="#" class="btn">3</a>
+            <a href="#" class="btn">4</a>
+            <a href="#" class="btn">5</a>
+            <a href="#" class="btn"><span class="iconfont iconfont-next"></span></a>
+          </div>
+        </div>
+        <div class="panel-cell-6 default-height">
+          <span class="text">共100页，到第</span>
+          <input type="text" placeholder="2/100">
+          <span class="text">页</span>
+          <a href="javascript:;" class="pro-goto">确定</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="panel-row nomargin">
+        <div class="panel-cell-4 text-center">
+          <ul class="ul-inline">
+            <li><a href="./product.html">产品列表</a></li>
+            <li><a href="./help.html">帮助中心</a></li>
+            <li><a href="./about.html">关于我们</a></li>
+          </ul>
+        </div>
+        <div class="panel-cell-4 text-center">
+          © 2018 abcc.com  京ICP备 12345678号-11
+        </div>
+        <div class="panel-cell-4 text-center">
+          <div class="ig">
+            <span class="iconfont iconfont-wechat"></span>
+            <span class="text">官方微信</span>
+          </div>
+          <div class="ig">
+            <span class="iconfont iconfont-weibo"></span>
+            <span class="text">官方微博</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="fixedbar">
+      <div class="fixedbar-item">
+        <span class="iconfont iconfont-customer"></span>
+        <div class="fixedbar-item-desc">
+          <span>联</span>
+          <span>系</span>
+          <span>客</span>
+          <span>服</span>
+        </div>
+      </div>
+      <div class="fixedbar-item" cxy-role="return-top" hidden>
+        <span class="iconfont iconfont-up"></span>
+        <div class="fixedbar-item-desc">
+          <span>回</span>
+          <span>到</span>
+          <span>顶</span>
+          <span>部</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+@import "variable.less";
+@import "reset.less";
+@import "./plugin/iconfont.less";
+@import "./plugin/navbar.less";
+@import "./plugin/banner.less";
+@import "./plugin/panel.less";
+@import "./plugin/media.less";
+@import "./plugin/footer.less";
+@import "./plugin/fixedbar.less";
+@import "./plugin/btn-group.less";
+@import "./plugin/position-list.less";
+@import "./plugin/artical.less";
+
+.caret(@n, @c) {
+  .caret-@{n} {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top-color: @c;
+    transform: translate(5px, 3px);
+  }
+}
+
+.caret(w, white);
+
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
